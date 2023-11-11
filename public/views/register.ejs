@@ -1,0 +1,134 @@
+<%- include("layouts/head") %>
+
+    <body>
+        <section class="vh-100">
+            <div class="container h-100">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col-lg-12 col-xl-11">
+                        <div class="card text-black" style="border-radius: 25px;">
+                            <div class="card-body p-md-5">
+                                <div class="row justify-content-center">
+                                    <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+
+                                        <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Form Registration</p>
+
+                                        <form class="mx-1 mx-md-4" action="/register" method="post">
+
+                                            <div class="d-flex flex-row align-items-center mb-4">
+                                                <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                                                <div class="form-outline flex-fill mb-0">
+                                                    <input type="text" name="user" class="form-control" required />
+                                                    <label class="form-label" for="user">Your User Nick</label>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="d-flex flex-row align-items-center mb-4">
+                                                <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                                                <div class="form-outline flex-fill mb-0">
+                                                    <input type="text" name="name" class="form-control" required />
+                                                    <label class="form-label" for="name">Your Name</label>
+                                                </div>
+
+                                            </div>
+                                            <div class="d-flex flex-row align-items-center mb-4">
+                                                <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                                                <div class="form-outline flex-fill mb-0">
+                                                    <select name="rol" id="rol" class="form-select"
+                                                        aria-label="Default select example">
+                                                        <option value="admin">Admin</option>
+                                                        <option value="data entry">Data Entry</option>
+                                                    </select>
+                                                    <label class="" for="form3Example1c">Role</label>
+
+                                                </div>
+                                            </div>
+
+
+
+                                            <div class="d-flex flex-row align-items-center mb-4">
+                                                <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                                                <div class="form-outline flex-fill mb-0">
+                                                    <input type="password" name="pass" class="form-control" id="PassID"
+                                                        required />
+                                                    <label class="form-label" for="form3Example4c">Password</label>
+                                                    <input type="checkbox" class="checkbox" onclick="hiddenFunction();">
+                                                    Show Pass
+                                                </div>
+                                            </div>
+
+                                            <div class="d-flex flex-row align-items-center mb-4">
+                                                <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                                                <div class="form-outline flex-fill mb-0">
+                                                    <input type="password" name="passConfirm" class="form-control" id="PassID2"
+                                                        required />
+                                                    <label class="form-label" for="form3Example4c">Check
+                                                        Password</label>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                                                <button type="submit" value="Save"
+                                                    class="btn btn-primary btn-lg">Register</button>
+                                            </div>
+
+                                        </form>
+
+                                    </div>
+                                    <!-- <div class="d-flex align-items-center" style="width: auto;">
+                                        <img src="./img/LogoMakr-02LTlj.png" class="img-fluid" alt="Sample image">
+
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+        <% if(typeof alert !="undefined" ) { %>
+            <script>
+                Swal.fire({
+                    title: '<%= alertTitle %>',
+                    text: '<%= alertMessage %>',
+                    icon: '<%= alertIcon %>',
+                    showConfirmButton: '<%= showConfirmButton %>',
+                    timer: 1500
+                }).then(() => {
+                    window.location = '/login'
+                })
+            </script>
+            <% } %>
+                <script>
+                    function hiddenFunction() {
+                        let foo = document.getElementById("PassID");
+                        if (foo.type === "password") {
+                            foo.type = "text";
+                        } else {
+                            foo.type = "password"
+                        }
+                    }
+
+                    var password = document.getElementById("PassID")
+                        , confirm_password = document.getElementById("PassID2");
+                        console.log(password.value.length);
+                    function validatePassword() {
+                        if (password.value != confirm_password.value) {
+                            confirm_password.setCustomValidity("Passwords Don't Match");
+                        }
+                        // if( password.value.length < 4 ) {
+                        //     console.log(password.value.length);
+                        //     password.setCustomValidity("La contraseña debe tener mas de 4 caracteres")
+                        // }
+                        else {
+                            confirm_password.setCustomValidity('');
+                        }
+                    }
+                    password.onchange = validatePassword;
+                    confirm_password.onkeyup = validatePassword;
+                </script>
+    </body>

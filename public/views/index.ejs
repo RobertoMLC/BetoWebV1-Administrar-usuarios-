@@ -1,0 +1,36 @@
+<%- include("layouts/head") %>
+
+    <body>
+        <h1>Beto web Login</h1>
+        <% if (login) { %>
+            <div class="container">
+                <div class="d-flex justify-content-center align-items-center">
+                    <h2>El usuario conectado es : <strong>
+                            <%= name %> (<%= rol %>)
+                        </strong></h2>
+                </div>
+            </div>
+            <div class="container">
+                <div class="d-flex justify-content-center align-items-center">
+                    <a href="logout" class="btn btn-warning">Logout</a>
+                </div>
+            </div>
+            <% if (rol === 'admin') { %>
+                <%- include("layouts/authAdmin") %>
+            <% }else{ %>
+                <%- include("layouts/authUser") %>
+            <% } %>
+            <% } else { %>
+                <h1><strong>
+                        <%= name %>
+                    </strong></h1>
+
+                <div class="container">
+                    <div class="d-flex justify-content-center align-items-center">
+                        <a href="login" class="btn btn-primary">Ir al loggin</a>
+                    </div>
+                </div>
+                <% } %>
+
+    </body>
+    <%- include("layouts/footer") %>

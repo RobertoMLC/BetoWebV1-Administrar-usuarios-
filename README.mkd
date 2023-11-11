@@ -1,0 +1,3 @@
+# Prueba para administrar usuarios y mostrar las tabalas DB
+
+Esto solo sirve de base, porque le faltan muchas validaciones

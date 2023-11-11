@@ -1,0 +1,26 @@
+<%- include("layouts/head") %>
+    <div class="container">
+        <h1>Aca deberia presentarce la tabla de la db</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">usuario</th>
+                    <th scope="col">Rol</th>
+                    <th scope="col">Contraseña</th>
+                </tr>
+            </thead>
+            <tbody>
+            <% for(i = 0; name.length > i; i++) { %>
+                <tr>
+                    <th scope="row"><%= i+1 %></th>
+                    <td><%= name[i] %></td>
+                    <td><%= user[i] %></td>
+                    <td><%= rol[i] %></td>
+                    <td><%= pass[i] %></td>
+                </tr>
+
+            <% } %>
+
+
